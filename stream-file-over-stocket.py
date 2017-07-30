@@ -1,7 +1,11 @@
+"""
+    Requires python 3
+"""
 import time
 import socket
 
 if __name__ == "__main__":
+    delay = 0.01
     filename = input("Enter the file to stream: ")
     host, port = "0.0.0.0", 9999
     serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -15,5 +19,6 @@ if __name__ == "__main__":
     for line in open(filename):
         print("Row number", count)
         count += 1
-        client.send(line)
-        time.sleep(0.5)
+        client.send(str.encode(line))
+        if delay: 
+            time.sleep(delay)
