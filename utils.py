@@ -21,9 +21,11 @@ class StopWatch:
 Batch class is used to create batch of a large set of data. 
 Often used to create mini batch for gradient descent algorith.
 """
-class Batch():    
-    def __init__(self, total, batch_size):
-        self.total = total
+class Batching():    
+    def __init__(self, X, y, batch_size):
+        self.X = X
+        self.y = y
+        self.total = X.shape[0]
         self.batch_size = batch_size
         self.current = 0
 
@@ -32,7 +34,7 @@ class Batch():
         indices = [i if i < self.total else i - self.total 
                        for i in range(self.current, max_index)]
         self.current = max_index % self.total
-        return indices 
+        return self.X[indices, ], self.y[indices, ]
     
     
 """
