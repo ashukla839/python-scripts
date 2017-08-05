@@ -1,4 +1,5 @@
 from datetime import datetime
+import os
 
 """
 Stopwatch is used to capture elapsed time for a code blocks
@@ -32,3 +33,15 @@ class Batch():
                        for i in range(self.current, max_index)]
         self.current = max_index % self.total
         return indices 
+    
+    
+"""
+Show files and their size
+"""
+
+def show_dir(path):
+    for f in os.listdir(path):
+        absolute_path = os.path.join(path, f)
+        size = absolute_path, os.stat(absolute_path).st_size
+        print("%d %s" % (size[1], absolute_path)) 
+        
