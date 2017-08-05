@@ -1,3 +1,5 @@
+from datetime import datetime
+
 """
 Stopwatch is used to capture elapsed time for a code blocks
 """
